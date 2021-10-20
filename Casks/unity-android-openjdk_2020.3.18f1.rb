@@ -20,6 +20,8 @@ cask "unity-android-openjdk_2020.3.18f1" do
 
   postflight do
     set_ownership("#{_openjdk_path}", user: 'root', group: 'wheel')
+    system '/usr/bin/sudo', '-E', '--', 'chmod', '-R o+rX', "#{_openjdk_path}"
+    system '/usr/bin/sudo', '-E', '--', 'xattr', '-rd', "#{_openjdk_path}"
   end
 
   depends_on cask: "unity-android_#{version.before_comma}"

@@ -37,6 +37,10 @@ cask "unity_2020.3.18f1" do
     if File.exist? '/Applications/Unity.temp'
       FileUtils.move '/Applications/Unity.temp', '/Applications/Unity'
     end
+
+    set_ownership("/Applications/Unity.#{version.before_comma}", user: 'root', group: 'wheel')
+    system '/usr/bin/sudo', '-E', '--', 'chmod', '-R o+rX', "/Applications/Unity.#{version.before_comma}"
+    system '/usr/bin/sudo', '-E', '--', 'xattr', '-rd', "/Applications/Unity.#{version.before_comma}"
   end
 
   uninstall quit:    "com.unity3d.UnityEditor5.x",
