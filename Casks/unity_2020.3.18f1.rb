@@ -21,26 +21,58 @@ cask "unity_2020.3.18f1" do
 
   preflight do
     if File.exist? "/Applications/Unity"
-      FileUtils.move "/Applications/Unity", "/Applications/Unity.temp"
+      system_command "/bin/mv",
+        args: [
+          '/Applications/Unity',
+          '/Applications/Unity.temp'
+        ],
+        sudo: true
     end
 
     if File.exist? "/Applications/Unity.#{version.before_comma}"
-      FileUtils.move "/Applications/Unity.#{version.before_comma}", '/Applications/Unity'
+      system_command "/bin/mv",
+        args: [
+          "/Applications/Unity.#{version.before_comma}",
+          '/Applications/Unity'
+        ],
+        sudo: true
     end
   end
 
   postflight do
     if File.exist? '/Applications/Unity'
-      FileUtils.move '/Applications/Unity', "/Applications/Unity.#{version.before_comma}"
+      system_command "/bin/mv",
+        args: [
+          '/Applications/Unity',
+          "/Applications/Unity.#{version.before_comma}",
+        ],
+        sudo: true
     end
 
     if File.exist? '/Applications/Unity.temp'
-      FileUtils.move '/Applications/Unity.temp', '/Applications/Unity'
+      system_command "/bin/mv",
+        args: [
+          '/Applications/Unity.temp',
+          '/Applications/Unity',
+        ],
+        sudo: true
     end
 
     set_ownership("/Applications/Unity.#{version.before_comma}", user: 'root', group: 'wheel')
-    system '/usr/bin/sudo', '-E', '--', 'chmod', '-R o+rX', "/Applications/Unity.#{version.before_comma}"
-    system '/usr/bin/sudo', '-E', '--', 'xattr', '-rd', "/Applications/Unity.#{version.before_comma}"
+
+    system_command "/bin/chmod",
+      args: [
+        '-R',
+        'o+rX',
+        "/Applications/Unity.#{version.before_comma}"
+      ],
+      sudo: true
+    system_command "/usr/bin/xattr",
+      args: [
+        '-rd',
+        "/Applications/Unity.#{version.before_comma}"
+      ],
+      sudo: true
   end
 
   uninstall quit:    "com.unity3d.UnityEditor5.x",

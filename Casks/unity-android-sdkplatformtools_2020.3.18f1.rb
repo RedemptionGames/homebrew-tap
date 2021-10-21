@@ -17,8 +17,20 @@ cask "unity-android-sdkplatformtools_2020.3.18f1" do
 
   postflight do
     set_ownership("#{_platformtools_path}", user: 'root', group: 'wheel')
-    system '/usr/bin/sudo', '-E', '--', 'chmod', '-R o+rX', "#{_platformtools_path}"
-    system '/usr/bin/sudo', '-E', '--', 'xattr', '-rd', "#{_platformtools_path}"
+
+    system_command "/bin/chmod",
+      args: [
+        '-R',
+        'o+rX',
+        "/Applications/Unity.#{version.before_comma}"
+      ],
+      sudo: true
+    system_command "/usr/bin/xattr",
+      args: [
+        '-rd',
+        "/Applications/Unity.#{version.before_comma}"
+      ],
+      sudo: true
   end
 
   depends_on cask: "unity-android-sdkndktools_#{version.before_comma}"
