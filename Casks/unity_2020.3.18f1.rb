@@ -60,6 +60,11 @@ cask "unity_2020.3.18f1" do
 
     set_ownership("/Applications/Unity.#{version.before_comma}", user: 'root', group: 'wheel')
 
+    system_command "/bin/rm -f",
+      args: [
+        "/Applications/Unity.#{version.before_comma}/Unity.app/Contents/Documentation"
+      ],
+      sudo: true
     system_command "/bin/chmod",
       args: [
         '-R',
