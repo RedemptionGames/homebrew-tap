@@ -74,6 +74,7 @@ cask "unity-ios_2020.3.18f1" do
     system_command "/usr/bin/xattr",
       args: [
         '-rd',
+        'com.apple.quarantine',
         "/Applications/Unity.#{version.before_comma}"
       ],
       sudo: true
