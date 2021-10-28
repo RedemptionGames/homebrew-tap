@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        templatefile: "${{ fromJson(needs.buildfilematrix.outputs.filematrix }}"
+        templatefile: "${{ fromJson(needs.buildfilematrix.outputs.filematrix) }}"
 
     steps:
       - name: Checkout Repo
@@ -37,4 +37,4 @@ jobs:
       - name: Execute createcasks.sh
         run: |
           ./.github/workflows/scripts/createcasks.sh -v '${{ github.event.inputs.unityversion }}' -t '${{ matrix.templatefile }}'
-          cat Casks/'${{ matrix.templatefile }}''${{ github.event.inputs.unityversion }}'
+          cat Casks/'${{ matrix.templatefile }}${{ github.event.inputs.unityversion }}'
