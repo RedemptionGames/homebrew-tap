@@ -69,6 +69,9 @@ jobs:
 
       - name: Create PR For New Casks
         run: |
+          git config --global user.email "sysadmin@redemptiongames.com"
+          git config --global user.name "Sys Admin"
+
           git checkout -b newcasks
           git add newcasks/*
           git commit -am 'New casks generated for Unity ${{ github.event.inputs.unityversion }}'
