@@ -46,5 +46,34 @@ jobs:
         run: |
           ./.github/workflows/scripts/createcasks.sh -v '${{ github.event.inputs.unityversion }}' -t '${{ matrix.templatefile }}'
 
-          TEMPLATEFILE='${{ matrix.templatefile }}'
-          cat "Casks/${TEMPLATEFILE%.rb}${{ github.event.inputs.unityversion }}.rb"
+      - uses: actions/upload-artifact@v2
+        with:
+          name: NewCasks
+          path: |
+            newcasks/*
+
+
+  generatepr:
+    needs: generatecasks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download NewCasks
+        uses: actions/download-artifact@v2
+        with:
+          name: NewCasks
+          path: newcasks/
+
+      - name: Authenticate gh Tool
+        run: |
+          # Auth the gh tool using the token provided for each workflow run.
+          echo "$TOKEN" | gh auth login --with-token > /dev/null 2>&1
+
+      - name: Create PR For New Casks
+        run: |
+          git checkout -b newcasks
+          git add newcasks/*
+          git commit -am 'New casks generated for Unity ${{ github.event.inputs.unityversion }}'
+          git push --set-upstream origin newcasks
+
+          gh pr create --fill
