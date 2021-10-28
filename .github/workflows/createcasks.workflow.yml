@@ -34,6 +34,10 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
 
+      - name: Setup Dependencies
+        run: |
+          brew install jinja2-cli gron
+
       - name: Execute createcasks.sh
         run: |
           ./.github/workflows/scripts/createcasks.sh -v '${{ github.event.inputs.unityversion }}' -t '${{ matrix.templatefile }}'
