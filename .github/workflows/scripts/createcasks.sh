@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -xv
+#!/usr/bin/env bash
 #
 # Dependencies: aria2, brew, jinja2-cli, gron
 
