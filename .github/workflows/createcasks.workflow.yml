@@ -58,6 +58,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
       - name: Download NewCasks
         uses: actions/download-artifact@v2
         with:
