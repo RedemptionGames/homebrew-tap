@@ -40,7 +40,7 @@ jobs:
 
       - name: Setup Dependencies
         run: |
-          brew install jinja2-cli gron
+          brew install jinja2-cli
 
       - name: Execute createcasks.sh
         run: |

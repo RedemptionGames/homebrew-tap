@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Dependencies: aria2, brew, jinja2-cli, gron
+# Dependencies: aria2, jinja2-cli
 
 usage () {
   echo "Usage: $0 -v [Unity version] -t [template to use]"
@@ -49,18 +49,18 @@ jinja2 -D unity_version="$VERSION" -D unity_version_hash="$VERSION_HASH" templat
 
 # We need to calculate the SHA256 sum for some casks.
 if [[ "$TEMPLATE" == 'unity_.rb' || "$TEMPLATE" == 'unity-ios_.rb' || "$TEMPLATE" == 'unity-android_.rb' ]]; then
-  # Get the entire URL used for download from the 'brew' command.  We use brew
-  # for this because it will parse our cask that we just created and can output
-  # in JSON.
-  DOWNLOAD_URL="$(brew info --json=v2 --cask Casks/$NEWFILE | \
-                  # gron is used to make JSON grep-able.
-                  gron | \
-                  # Find the URL for the archive.
-                  grep 'json.casks.*.url' | \
-                  # Remove the text preceeding the URL string that we want.
-                  sed 's%^.* = \"%%' | \
-                  # Remove the text following the URL string that we want.
-                  sed 's%\";$%%')"
+  case "$TEMPLATE" in
+    'unity_.rb')
+      DOWNLOAD_URL="https://download.unity3d.com/download_unity/$VERSION_HASH/MacEditorInstaller/Unity-$VERSION.pkg"
+      ;;
+    'unity-ios_.rb')
+      DOWNLOAD_URL="https://netstorage.unity3d.com/unity/$VERSION_HASH/MacEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-$VERSION.pkg"
+      ;;
+    'unity-android_.rb')
+      DOWNLOAD_URL="https://netstorage.unity3d.com/unity/$VERSION_HASH/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-$VERSION.pkg"
+      ;;
+  esac
+
   # The URL has the name of the archive that we are downloading at the very end
   # so we use sed to remove all of the text preceeding that.
   DOWNLOAD_ARCHIVE="$(echo $DOWNLOAD_URL | sed 's%.*/%%')"
