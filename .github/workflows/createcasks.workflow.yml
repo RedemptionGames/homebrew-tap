@@ -67,7 +67,7 @@ jobs:
       - name: Authenticate gh Tool
         run: |
           # Auth the gh tool using the token provided for each workflow run.
-          echo "$TOKEN" | gh auth login --with-token > /dev/null 2>&1
+          echo "$GITHUB_TOKEN" | gh auth login --with-token > /dev/null 2>&1
 
       - name: Create PR For New Casks
         run: |
