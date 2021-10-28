@@ -1,5 +1,9 @@
 name: 'Create Unity Homebrew Casks'
 
+defaults:
+  run:
+    shell: bash
+
 on:
   workflow_dispatch:
     inputs:
@@ -41,4 +45,6 @@ jobs:
       - name: Execute createcasks.sh
         run: |
           ./.github/workflows/scripts/createcasks.sh -v '${{ github.event.inputs.unityversion }}' -t '${{ matrix.templatefile }}'
-          cat Casks/'${{ matrix.templatefile }}${{ github.event.inputs.unityversion }}'
+
+          TEMPLATEFILE='${{ matrix.templatefile }}'
+          cat "Casks/${TEMPLATEFILE%.rb}${{ github.event.inputs.unityversion }}.rb"
