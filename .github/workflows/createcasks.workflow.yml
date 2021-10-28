@@ -64,11 +64,6 @@ jobs:
           name: NewCasks
           path: newcasks/
 
-      - name: Authenticate gh Tool
-        run: |
-          # Auth the gh tool using the token provided for each workflow run.
-          echo "$GITHUB_TOKEN" | gh auth login --with-token > /dev/null 2>&1
-
       - name: Create PR For New Casks
         run: |
           git checkout -b newcasks
