@@ -82,6 +82,5 @@ if [[ "$TEMPLATE" == 'unity_.rb' || "$TEMPLATE" == 'unity-ios_.rb' || "$TEMPLATE
 else
   # Populate the template for casks that are more static.  Most of our casks
   # are the same download for each Unity version.
-  jinja2 -D unity_version="$VERSION" -D unity_version_hash="$VERSION_HASH"
-  templates/casks/"$TEMPLATE" -o newcasks/"$NEWFILE"
+  jinja2 -D unity_version="$VERSION" -D unity_version_hash="$VERSION_HASH" templates/casks/"$TEMPLATE" -o newcasks/"$NEWFILE"
 fi
