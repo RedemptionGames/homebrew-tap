@@ -42,15 +42,18 @@ VERSION_HASH=$(curl -s https://unity3d.com/get-unity/download/archive | grep "un
                # Remove the text following the hash string.
                sed 's%\" class=.*$%%')
 
+echo "Version hash for Unity $VERSION is: $VERSION_HASH"
+
 # Notice we strip the .rb suffix of $TEMPLATE.
 NEWFILE="${TEMPLATE%.rb}$VERSION.rb"
 
+# Dump our populated casks here.
 mkdir newcasks
 
-jinja2 -D unity_version="$VERSION" -D unity_version_hash="$VERSION_HASH" templates/casks/"$TEMPLATE" -o newcasks/"$NEWFILE"
-
-# We need to calculate the SHA256 sum for some casks.
 if [[ "$TEMPLATE" == 'unity_.rb' || "$TEMPLATE" == 'unity-ios_.rb' || "$TEMPLATE" == 'unity-android_.rb' ]]; then
+  # These casks download a different package for each release so we calculate
+  # the SHA256 sum.  Since parsing the URL is too problematic, we just
+  # hard-code them here.
   case "$TEMPLATE" in
     'unity_.rb')
       DOWNLOAD_URL="https://download.unity3d.com/download_unity/$VERSION_HASH/MacEditorInstaller/Unity-$VERSION.pkg"
@@ -73,5 +76,12 @@ if [[ "$TEMPLATE" == 'unity_.rb' || "$TEMPLATE" == 'unity-ios_.rb' || "$TEMPLATE
 
   SHA256=$(shasum -a 256 "$DOWNLOAD_ARCHIVE" | awk '{print $1}')
 
+  echo "SHA256 sum is: $SHA256"
+
   jinja2 -D package_sha="$SHA256" -D unity_version="$VERSION" -D unity_version_hash="$VERSION_HASH" templates/casks/"$TEMPLATE" -o newcasks/"$NEWFILE"
+else
+  # Populate the template for casks that are more static.  Most of our casks
+  # are the same download for each Unity version.
+  jinja2 -D unity_version="$VERSION" -D unity_version_hash="$VERSION_HASH"
+  templates/casks/"$TEMPLATE" -o newcasks/"$NEWFILE"
 fi
