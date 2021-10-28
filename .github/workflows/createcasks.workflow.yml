@@ -7,8 +7,6 @@ on:
         description: 'Unity version to build casks for (2020.3.18f1 for example).'
         required: true
 
-env:
-
 jobs:
   buildfilematrix:
     runs-on: ubuntu-latest
@@ -22,9 +20,7 @@ jobs:
       - name: Setup Matrix
         id: set-matrix
         run: |
-          echo "::set-output name=filematrix::$(ls templates/casks/ | \
-                jq --raw-input | \
-                jq --slurp --compact-output)"
+          echo "::set-output name=filematrix::$(ls templates/casks/ | jq --raw-input | jq --slurp --compact-output)"
 
 
   generatecasks:
