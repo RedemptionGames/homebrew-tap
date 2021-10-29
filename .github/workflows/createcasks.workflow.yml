@@ -65,7 +65,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: NewCasks
-          path: newcasks/
+          path: Casks/
 
       - name: Create PR For New Casks
         env:
@@ -75,7 +75,7 @@ jobs:
           git config --global user.name "Sys Admin"
 
           git checkout -b newcasks
-          git add newcasks/*
+          git add Casks/*
           git commit -am 'New casks generated for Unity ${{ github.event.inputs.unityversion }}'
           git push --set-upstream origin newcasks
 
