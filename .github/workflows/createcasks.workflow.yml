@@ -79,5 +79,5 @@ jobs:
           git commit -am 'New casks generated for Unity ${{ github.event.inputs.unityversion }}'
           git push --set-upstream origin newcasks
 
-          echo "$GITHUB_TOKEN" | gh auth login --with-token
+          gh auth login --with-token
           gh pr create --fill
