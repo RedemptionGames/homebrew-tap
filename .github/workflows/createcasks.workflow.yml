@@ -68,6 +68,8 @@ jobs:
           path: newcasks/
 
       - name: Create PR For New Casks
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.email "sysadmin@redemptiongames.com"
           git config --global user.name "Sys Admin"
@@ -77,5 +79,4 @@ jobs:
           git commit -am 'New casks generated for Unity ${{ github.event.inputs.unityversion }}'
           git push --set-upstream origin newcasks
 
-          gh auth login --with-token
           gh pr create --fill
