@@ -5,7 +5,7 @@ cask "unity-windows-support-for-editor" do
   sha256 "{{ package_sha }}"
 
   url "https://netstorage.unity3d.com/unity/#{version.after_comma}/MacEditorTargetInstaller/#{_package_name}-#{version.before_comma}.pkg",
-        verified: "download.unity3d.com/download_unity/"
+      verified: "download.unity3d.com/download_unity/"
   name "Windows (Mono) Build Support"
   desc "Allows building your Unity projects for the Windows platform from MacOs"
   homepage "https://unity.com/products"
@@ -24,64 +24,63 @@ cask "unity-windows-support-for-editor" do
   depends_on cask: "unity_#{version.before_comma}"
   
   preflight do
-      if File.exist? "/Applications/Unity"
-        system_command "/bin/mv",
-          args: [
-            '/Applications/Unity',
-            '/Applications/Unity.temp'
-          ],
-          sudo: true
-      end
-  
-      if File.exist? "/Applications/Unity.#{version.before_comma}"
-        system_command "/bin/mv",
-          args: [
-            "/Applications/Unity.#{version.before_comma}",
-            '/Applications/Unity'
-          ],
-          sudo: true
-      end
-    end
-  
-    postflight do
-      if File.exist? '/Applications/Unity'
-        system_command "/bin/mv",
-          args: [
-            '/Applications/Unity',
-            "/Applications/Unity.#{version.before_comma}",
-          ],
-          sudo: true
-      end
-  
-      if File.exist? '/Applications/Unity.temp'
-        system_command "/bin/mv",
-          args: [
-            '/Applications/Unity.temp',
-            '/Applications/Unity',
-          ],
-          sudo: true
-      end
-  
-      set_ownership("/Applications/Unity.#{version.before_comma}", user: 'root', group: 'wheel')
-  
-      system_command "/bin/chmod",
+    if File.exist? "/Applications/Unity"
+      system_command "/bin/mv",
         args: [
-          '-R',
-          'o+rX',
-          "/Applications/Unity.#{version.before_comma}"
-        ],
-        sudo: true
-      system_command "/usr/bin/xattr",
-        args: [
-          '-rd',
-          'com.apple.quarantine',
-          "/Applications/Unity.#{version.before_comma}"
+          '/Applications/Unity',
+          '/Applications/Unity.temp'
         ],
         sudo: true
     end
-  
-    uninstall quit:    "com.unity3d.UnityEditor5.x",
-              pkgutil: "com.unity3d.UnityEditor5.x",
-              delete:  "/Applications/Unity.#{version.before_comma}/PlaybackEngines/WindowsStandaloneSupport"
+
+    if File.exist? "/Applications/Unity.#{version.before_comma}"
+      system_command "/bin/mv",
+        args: [
+          "/Applications/Unity.#{version.before_comma}",
+          '/Applications/Unity'
+        ],
+        sudo: true
+    end
   end
+
+  postflight do
+    if File.exist? '/Applications/Unity'
+      system_command "/bin/mv",
+        args: [
+          '/Applications/Unity',
+          "/Applications/Unity.#{version.before_comma}",
+        ],
+        sudo: true
+    end
+
+    if File.exist? '/Applications/Unity.temp'
+      system_command "/bin/mv",
+        args: [
+          '/Applications/Unity.temp',
+          '/Applications/Unity',
+        ],
+        sudo: true
+    end
+
+    set_ownership("/Applications/Unity.#{version.before_comma}", user: 'root', group: 'wheel')
+
+    system_command "/bin/chmod",
+      args: [
+        '-R',
+        'o+rX',
+        "/Applications/Unity.#{version.before_comma}"
+      ],
+      sudo: true
+    system_command "/usr/bin/xattr",
+      args: [
+        '-rd',
+        'com.apple.quarantine',
+        "/Applications/Unity.#{version.before_comma}"
+      ],
+      sudo: true
+  end
+  
+  uninstall quit:    "com.unity3d.UnityEditor5.x",
+            pkgutil: "com.unity3d.UnityEditor5.x",
+            delete:  "/Applications/Unity.#{version.before_comma}/PlaybackEngines/WindowsStandaloneSupport"
 end
