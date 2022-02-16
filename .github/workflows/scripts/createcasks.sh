@@ -50,7 +50,7 @@ NEWFILE="${TEMPLATE%.rb}$VERSION.rb"
 # Dump our populated casks here.
 mkdir newcasks
 
-if [[ "$TEMPLATE" == 'unity_.rb' || "$TEMPLATE" == 'unity-ios_.rb' || "$TEMPLATE" == 'unity-android_.rb' ]]; then
+if [[ "$TEMPLATE" == 'unity_.rb' || "$TEMPLATE" == 'unity-ios_.rb' || "$TEMPLATE" == 'unity-android_.rb' || "$TEMPLATE" == 'unity-windows_.rb' ]]; then
   # These casks download a different package for each release so we calculate
   # the SHA256 sum.  Since parsing the URL is too problematic, we just
   # hard-code them here.
@@ -63,6 +63,9 @@ if [[ "$TEMPLATE" == 'unity_.rb' || "$TEMPLATE" == 'unity-ios_.rb' || "$TEMPLATE
       ;;
     'unity-android_.rb')
       DOWNLOAD_URL="https://netstorage.unity3d.com/unity/$VERSION_HASH/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-$VERSION.pkg"
+      ;;
+    'unity-windows_.rb')
+      DOWNLOAD_URL="https://netstorage.unity3d.com/unity/$VERSION_HASH/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-$VERSION.pkg"
       ;;
   esac
 
