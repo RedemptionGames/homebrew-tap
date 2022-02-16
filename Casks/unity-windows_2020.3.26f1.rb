@@ -1,4 +1,4 @@
-cask "unity-windows-support-for-editor" do
+cask "unity-windows2020.3.26f1" do
   _package_name = 'UnitySetup-Windows-Mono-Support-for-Editor'
 
   version "2020.3.26f1,7298b473bc1a"
