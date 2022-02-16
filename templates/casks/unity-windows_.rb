@@ -1,4 +1,4 @@
-cask "unity-windows{{ unity_version }}" do
+cask "unity-windows_{{ unity_version }}" do
   _package_name = 'UnitySetup-Windows-Mono-Support-for-Editor'
 
   version "{{ unity_version }},{{ unity_version_hash }}"
