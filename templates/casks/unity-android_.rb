@@ -4,7 +4,7 @@ cask "unity-android_{{ unity_version }}" do
   version "{{ unity_version }},{{ unity_version_hash }}"
   sha256 "{{ package_sha }}"
 
-  url "https://netstorage.unity3d.com/unity/#{version.after_comma}/MacEditorTargetInstaller/#{_package_name}-#{version.before_comma}.pkg",
+  url "https://download.unity3d.com/unity/#{version.after_comma}/MacEditorTargetInstaller/#{_package_name}-#{version.before_comma}.pkg",
       verified: "download.unity3d.com/download_unity/"
   name "Android Build Support"
   desc "Allows building your Unity projects for the Android platform"
