@@ -4,7 +4,7 @@ cask "unity-android_2021.3.8f1" do
   version "2021.3.8f1,b30333d56e81"
   sha256 ""
 
-  url "https://download.unity3d.com/unity/#{version.after_comma}/MacEditorTargetInstaller/#{_package_name}-#{version.before_comma}.pkg",
+  url "https://download.unity3d.com/download_unity/#{version.after_comma}/MacEditorTargetInstaller/#{_package_name}-#{version.before_comma}.pkg",
       verified: "download.unity3d.com/download_unity/"
   name "Android Build Support"
   desc "Allows building your Unity projects for the Android platform"
