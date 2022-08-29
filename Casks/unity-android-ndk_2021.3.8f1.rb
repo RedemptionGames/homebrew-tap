@@ -1,8 +1,8 @@
 cask "unity-android-ndk_2021.3.8f1" do
   version "2021.3.8f1"
-  sha256 "04159ade2fc5c7d055248cf65664039b8596f4b9ee3fbc44a9bf2ce2ee28d95d"
+  sha256 "5851115c6fc4cce26bc320295b52da240665d7ff89bda2f5d5af1887582f5c48"
 
-  url "https://dl.google.com/android/repository/android-ndk-r19-darwin-x86_64.zip"
+  url "https://dl.google.com/android/repository/android-ndk-r21d-darwin-x86_64.zip"
   name "Android NDK"
   desc "Android NDK for use specifically with Unity"
   homepage "https://unity.com/products"
@@ -10,7 +10,7 @@ cask "unity-android-ndk_2021.3.8f1" do
   _ndk_path = "/Applications/Unity.#{version}/PlaybackEngines/AndroidPlayer/NDK"
   installer script: {
     executable: "/bin/cp",
-    args:       ["-pr", "#{caskroom_path}/#{version}/android-ndk-r19/", "#{_ndk_path}"],
+    args:       ["-pr", "#{caskroom_path}/#{version}/android-ndk-r21d/", "#{_ndk_path}"],
     sudo:       true,
   }
 
