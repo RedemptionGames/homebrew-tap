@@ -1,6 +1,6 @@
 cask "unity-android-buildtools_2020.3.38f1" do
   version "2020.3.38f1"
-  sha256 "368c9a617abefcd16d9fb5fe94c9c10466335ad5d5ff02d3e76ae5098ed060bd"
+  sha256 "18430abb9eaf0ed482fcaf55d5912912ba948b2cf486367377b14d6b4e8ec053"
 
   _buildtools_version = '29.0.3'
   url "https://dl.google.com/android/repository/build-tools_r#{_buildtools_version}-macosx.zip"
