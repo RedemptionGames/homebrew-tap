@@ -1,6 +1,6 @@
 cask "unity-android-ndk_2020.3.38f1" do
   version "2020.3.38f1"
-  sha256 "5851115c6fc4cce26bc320295b52da240665d7ff89bda2f5d5af1887582f5c48"
+  sha256 "04159ade2fc5c7d055248cf65664039b8596f4b9ee3fbc44a9bf2ce2ee28d95d"
 
   url "https://dl.google.com/android/repository/android-ndk-r19-darwin-x86_64.zip"
   name "Android NDK"
