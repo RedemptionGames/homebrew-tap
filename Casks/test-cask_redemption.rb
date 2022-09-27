@@ -10,31 +10,6 @@ cask "test-cask_redemption" do
 
   _buildtools_path = "/Applications/Unity.#{version}/PlaybackEngines/AndroidPlayer/SDK/build-tools/#{_buildtools_version}"
   installer script: {
-    executable: "/bin/cp",
-    args:       ["-pr", "#{caskroom_path}/#{version}/android-9/", "#{_buildtools_path}"],
-    sudo:       true,
   }
 
-  preflight do
-    system '/usr/bin/sudo', '-E', '--', 'mkdir', '-p', "#{_buildtools_path}"
-  end
-
-  postflight do
-    set_ownership("#{_buildtools_path}", user: 'root', group: 'wheel')
-
-    system_command "/bin/chmod",
-      args: [
-        '-R',
-        'o+rX',
-        "/Applications/Unity.#{version.before_comma}"
-      ],
-      sudo: true
-    system_command "/usr/bin/xattr",
-      args: [
-        '-rd',
-        'com.apple.quarantine',
-        "/Applications/Unity.#{version.before_comma}"
-      ],
-      sudo: true
-  end
 end
