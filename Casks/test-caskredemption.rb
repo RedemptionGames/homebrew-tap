@@ -1,4 +1,4 @@
-cask "testcaskredemption" do
+cask "test-caskredemption" do
   version "2021.3.8f1"
   sha256 "be65592c9219757468065fe5945ac5500fbd84fcc069d7b13b077c0d663642ef"
 
