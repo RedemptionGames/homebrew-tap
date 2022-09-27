@@ -2,7 +2,7 @@ cask "unity-android_2021.3.8f1" do
   _package_name = 'UnitySetup-Android-Support-for-Editor'
 
   version "2021.3.8f1,b30333d56e81"
-  sha256 ""
+  sha256 "4597939fb4127cd921f354bef114029a90a53e1086467da1558ef36cad61a5bb"
 
   url "https://download.unity3d.com/download_unity/#{version.after_comma}/MacEditorTargetInstaller/#{_package_name}-#{version.before_comma}.pkg",
       verified: "download.unity3d.com/download_unity/"
