@@ -37,6 +37,4 @@ cask "test-cask_redemption" do
       ],
       sudo: true
   end
-
-  depends_on cask: "unity-android-sdkndktools_#{version.before_comma}"
 end
