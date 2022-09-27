@@ -40,6 +40,7 @@ jobs:
 
       - name: Setup Dependencies
         run: |
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           brew install jinja2-cli
 
       - name: Execute createcasks.sh
