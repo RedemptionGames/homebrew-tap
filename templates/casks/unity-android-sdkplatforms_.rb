@@ -1,8 +1,8 @@
 cask "unity-android-sdkplatforms_{{ unity_version }}" do
   version "{{ unity_version }}"
-  sha256 "8452dbbf9668a428abb243c4f02a943b7aa83af3cca627629a15c4c09f28e7bd"
+  sha256 "1d69fe1d7f9788d82ff3a374faf4f6ccc9d1d372aa84a86b5bcfb517523b0b3f"
 
-  _platforms_version = '28_r06'
+  _platforms_version = '31_r01'
   url "https://dl.google.com/android/repository/platform-#{_platforms_version}.zip"
   name "Android SDK Build Tools #{_platforms_version}"
   desc "Android SDK Build Tools for use specifically with Unity"
