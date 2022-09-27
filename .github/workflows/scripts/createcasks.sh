@@ -59,13 +59,13 @@ if [[ "$TEMPLATE" == 'unity_.rb' || "$TEMPLATE" == 'unity-ios_.rb' || "$TEMPLATE
       DOWNLOAD_URL="https://download.unity3d.com/download_unity/$VERSION_HASH/MacEditorInstaller/Unity-$VERSION.pkg"
       ;;
     'unity-ios_.rb')
-      DOWNLOAD_URL="https://download.unity3d.com/unity/$VERSION_HASH/MacEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-$VERSION.pkg"
+      DOWNLOAD_URL="https://download.unity3d.com/download_unity/$VERSION_HASH/MacEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-$VERSION.pkg"
       ;;
     'unity-android_.rb')
-      DOWNLOAD_URL="https://download.unity3d.com/unity/$VERSION_HASH/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-$VERSION.pkg"
+      DOWNLOAD_URL="https://download.unity3d.com/download_unity/$VERSION_HASH/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-$VERSION.pkg"
       ;;
     'unity-windows_.rb')
-      DOWNLOAD_URL="https://download.unity3d.com/unity/$VERSION_HASH/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-$VERSION.pkg"
+      DOWNLOAD_URL="https://download.unity3d.com/download_unity/$VERSION_HASH/MacEditorTargetInstaller/UnitySetup-Windows-Mono-Support-for-Editor-$VERSION.pkg"
       ;;
   esac
 
