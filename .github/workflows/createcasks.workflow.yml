@@ -37,10 +37,10 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
-
+      
+      - run: echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> $GITHUB_PATH
       - name: Setup Dependencies
         run: |
-          echo "/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin" >> $GITHUB_PATH
           brew install jinja2-cli
 
       - name: Execute createcasks.sh
