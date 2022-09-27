@@ -11,7 +11,7 @@ cask "unity-android-buildtools_2021.3.8f1" do
   _buildtools_path = "/Applications/Unity.#{version}/PlaybackEngines/AndroidPlayer/SDK/build-tools/#{_buildtools_version}"
   installer script: {
     executable: "/bin/cp",
-    args:       ["-pr", "#{caskroom_path}/#{version}/android-9/", "#{_buildtools_path}"],
+    args:       ["-pr", "#{caskroom_path}/#{version}/android-11/", "#{_buildtools_path}"],
     sudo:       true,
   }
 
