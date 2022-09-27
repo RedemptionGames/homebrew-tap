@@ -1,6 +1,6 @@
 cask "test-cask_redemption" do
   version "2021.3.8f1"
-  sha256 "be65592c9219757468065fe5945ac5500fbd84fcc069d7b13b077c0d663642ef"
+  sha256 "ae65592c9219757468065fe5945ac5500fbd84fcc069d7b13b077c0d663642ef"
 
   _buildtools_version = '30.0.2'
   url "https://dl.google.com/android/repository/5a6ceea22103d8dec989aefcef309949c0c42f1d.build-tools_r#{_buildtools_version}-macosx.zip"
