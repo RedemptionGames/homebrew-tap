@@ -8,10 +8,10 @@ cask "unity-android-sdkplatforms_2020.3.38f1" do
   desc "Android SDK Build Tools for use specifically with Unity"
   homepage "https://unity.com/products"
 
-  _platforms_path = "/Applications/Unity.#{version}/PlaybackEngines/AndroidPlayer/SDK/platforms/android-28"
+  _platforms_path = "/Applications/Unity.#{version}/PlaybackEngines/AndroidPlayer/SDK/platforms/android-31"
   installer script: {
     executable: "/bin/cp",
-    args:       ["-pr", "#{caskroom_path}/#{version}/android-9/", "#{_platforms_path}"],
+    args:       ["-pr", "#{caskroom_path}/#{version}/android-12/", "#{_platforms_path}"],
     sudo:       true,
   }
 
