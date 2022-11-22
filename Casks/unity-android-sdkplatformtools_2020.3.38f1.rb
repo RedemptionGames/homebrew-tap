@@ -1,6 +1,6 @@
 cask "unity-android-sdkplatformtools_2020.3.38f1" do
   version "2020.3.38f1"
-  sha256 "3bc833ae3f4bd831af03811f2d1be540c2eb2eb9a17de9398b0a06dc5af6fa84"
+  sha256 "84acbbd2b2ccef159ae3e6f83137e44ad18388ff3cc66bb057c87d761744e595"
 
   _platformtools_version = '33.0.3'
   url "https://dl.google.com/android/repository/platform-tools_r#{_platformtools_version}-darwin.zip"
