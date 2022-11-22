@@ -1,6 +1,6 @@
 cask "unity-android-buildtools_2020.3.38f1" do
   version "2020.3.38f1"
-  sha256 "b87ab894b33c160e56869dab70165a3d5e8ef923806ce3d31774a102ce4b2ceb"
+  sha256 "be65592c9219757468065fe5945ac5500fbd84fcc069d7b13b077c0d663642ef"
 
   _buildtools_version = '30.0.2'
   url "https://dl.google.com/android/repository/5a6ceea22103d8dec989aefcef309949c0c42f1d.build-tools_r#{_buildtools_version}-macosx.zip"
@@ -11,7 +11,7 @@ cask "unity-android-buildtools_2020.3.38f1" do
   _buildtools_path = "/Applications/Unity.#{version}/PlaybackEngines/AndroidPlayer/SDK/build-tools/#{_buildtools_version}"
   installer script: {
     executable: "/bin/cp",
-    args:       ["-pr", "#{caskroom_path}/#{version}/android-11/", "#{_buildtools_path}"],
+    args:       ["-pr", "#{caskroom_path}/#{version}/android-9/", "#{_buildtools_path}"],
     sudo:       true,
   }
 

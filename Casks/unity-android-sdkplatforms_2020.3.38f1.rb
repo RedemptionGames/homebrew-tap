@@ -1,6 +1,6 @@
 cask "unity-android-sdkplatforms_2020.3.38f1" do
   version "2020.3.38f1"
-  sha256 "8452dbbf9668a428abb243c4f02a943b7aa83af3cca627629a15c4c09f28e7bd"
+  sha256 "1d69fe1d7f9788d82ff3a374faf4f6ccc9d1d372aa84a86b5bcfb517523b0b3f"
 
   _platforms_version = '31_r01'
   url "https://dl.google.com/android/repository/platform-#{_platforms_version}.zip"
@@ -8,10 +8,10 @@ cask "unity-android-sdkplatforms_2020.3.38f1" do
   desc "Android SDK Build Tools for use specifically with Unity"
   homepage "https://unity.com/products"
 
-  _platforms_path = "/Applications/Unity.#{version}/PlaybackEngines/AndroidPlayer/SDK/platforms/android-31"
+  _platforms_path = "/Applications/Unity.#{version}/PlaybackEngines/AndroidPlayer/SDK/platforms/android-28"
   installer script: {
     executable: "/bin/cp",
-    args:       ["-pr", "#{caskroom_path}/#{version}/android-12/", "#{_platforms_path}"],
+    args:       ["-pr", "#{caskroom_path}/#{version}/android-9/", "#{_platforms_path}"],
     sudo:       true,
   }
 

@@ -2,7 +2,7 @@ cask "unity-windows_2020.3.38f1" do
   _package_name = 'UnitySetup-Windows-Mono-Support-for-Editor'
 
   version "2020.3.38f1,8f5fde82e2dc"
-  sha256 ""
+  sha256 "41adec14ebfc651e227d5dcdf4b59f0e344b591e8ec3931370884f836ec5a8ef"
 
   url "https://download.unity3d.com/download_unity/#{version.after_comma}/MacEditorTargetInstaller/#{_package_name}-#{version.before_comma}.pkg",
       verified: "download.unity3d.com/download_unity/"
