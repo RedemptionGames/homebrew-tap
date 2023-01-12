@@ -36,7 +36,7 @@ if [[ -z "$VERSION" ]] || [[ -z "$TEMPLATE" ]]; then
 fi
 
                # Scrape the HTML for the hash of the version of the package that we are interested in.
-VERSION_HASH=$(curl -s https://unity3d.com/get-unity/download/archive | grep "unityhub://"$VERSION"" | \
+VERSION_HASH=$(curl -s -L https://unity3d.com/get-unity/download/archive | grep "unityhub://"$VERSION"" | \
                # Remove the text preceeding the hash string.
                sed "s%^ *<a href=\"unityhub://"$VERSION"/%%" | \
                # Remove the text following the hash string.
